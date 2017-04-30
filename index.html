@@ -6,12 +6,74 @@
 
   <!-- Added link to the jQuery Library -->
   <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  
   <!-- Added a link to Bootstrap-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6"></div>
+      			<div class="col-lg-6 text-center">
+        			<h1 id="gameTitle">Star Wars RPG</h1>
+      			</div>
+     		</div> 
+  		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 allChar text-center">
+				<div class="box notClicked" id="obiwan">
+					<p>Obi-Wan Kenobi</p>
+					<img class="center" src="assets/images/obiwan.jpg" alt="obiwan" height = 100px width = 200px>
+					<footer id="obiFoot"></footer>
+				</div>
+				<div class="box notClicked" id="skywalker">
+					<p>Luke Skywalker</p>
+					<img class="center" src="assets/images/luke.jpg" alt="luke" height = 100px width = 200px>
+					<footer id="skyFoot"></footer>
+				</div>
+				<div class="box notClicked" id="vader">
+					<p>Darth Vader</p>
+					<img class="center" src="assets/images/vader.jpg" alt="darth vader" height = 100px width = 200px>
+					<footer id="vadFoot"></footer>
+				</div>
+				<div class="box notClicked" id="fett">
+					<p>Boba Fett</p>
+					<img class="center" src="assets/images/fett.jpg" alt="boba fett" height = 100px width = 200px>
+					<footer id="fettFoot"></footer>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" id="yourChar">
+				<h2>Your Character</h2>
+				
 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" id="enemiesAvailable">
+				<h2>Enemies Available to Attack</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" class="fightSection">
+				<h2>Fight Section</h2>
+				<button type="button">Attack  !</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12" id="defender">
+				<h2>Defender</h2>
+
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
 </body>
 </html>
