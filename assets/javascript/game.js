@@ -1,45 +1,66 @@
 
+var names = ["obiwan", "luke", "vader", "fett"];
+var healths = [120, 100, 150, 180];
+var attacks = [8, 5, 25, 20];
+var yourCharHealth = 0;
+var yourCharAttack = 0;
+var enemyCharHealth = 0;
+var enemyCharAttack = 0;
+var initialAttack = 0;
 
-var obiAttack = 8;
-var lukeAttack = 5;
-var vaderAttack = 25;
-var fettAttack = 20;
+$("#obiFoot").html(healths[0]);
+$("#skyFoot").html(healths[1]);
+$("#vadFoot").html(healths[2]);
+$("#fettFoot").html(healths[3]);
 
 
+$(".characterBox").click(function()
+	{
+    	$(this).detach().appendTo("#yourChar").removeClass("characterBox").removeClass("notClicked").addClass("clickedCharacter");
+    	$(".notClicked").detach().appendTo("#enemiesAvailable").css("background-color","red").addClass("possibleEnemies");
+    	characterYouChose();   	
+    	$( ".clickedCharacter > footer" ).html(yourCharHealth);
+    	$(".characterBox").off("click"); 
 
-document.onkeyup = function(event)
-  { 
-    var obiWanScore = Math.floor(Math.random() * (40)) + 180;
-	$("#obiFoot").html(obiWanScore);
-    var lukeScore = Math.floor(Math.random() * (50)) + 200;
-    $("#skyFoot").html(lukeScore);
-	var vaderScore = Math.floor(Math.random() * (20)) + 100;
-	$("#vadFoot").html(vaderScore);
-	var fettScore = Math.floor(Math.random() * (30)) + 120;
-	$("#fettFoot").html(fettScore);
+    	$(".possibleEnemies").click(function()
+     		{
+     			$(this).detach().appendTo("#defender").removeClass("notClicked").removeClass("possibleEnemies").addClass("clickedDefender").css("background-color","black").css("color","white");
+     			$(".possibleEnemies").off("click");
+     			enemyYouChose();	
+     			$( ".clickedDefender > footer" ).html(enemyCharHealth);
+     				
+     				$("button").click(function(){
+     					fight();
+     					});
+
+			});
+	});
+
+function characterYouChose(){
+	for (var i = 0; i<names.length; i++) {
+		if($(".clickedCharacter").attr("id") == names[i]) {
+			yourCharHealth = healths[i];
+			yourCharAttack = attacks[i];
+			initialAttack = attacks[i];	
+		}
+	}
 }
 
-$(".box").click(function(){
-    console.log("The paragraph was clicked.");
-    // var thisId = $(this).attr("id");  also works
-    // var thisId = this.id;
-    var moveBox = $(this).detach();
-    moveBox.appendTo("#yourChar");
-    $(this).removeClass("notClicked").addClass("clickedChar");
+function enemyYouChose(){
+	for (var i = 0; i<names.length; i++) {
+		if($(".clickedDefender").attr("id") == names[i]) {
+			enemyCharHealth = healths[i];
+			enemyCharAttack = attacks[i];		
+		}
+	}
+}
 
-
-    var moveAll = $(".allChar").detach();
-    moveAll.appendTo("#enemiesAvailable");
-
-     $(".box").off("click");
-     $(".notClicked").click(function(){
-     	var moveEnemy = $(this).detach();
-     	moveEnemy.appendTo("#defender");
-     	
-
-   
-     })
-});
-
+function fight() {
+	enemyCharHealth = enemyCharHealth - yourCharAttack;
+	yourCharHealth = yourCharHealth - enemyCharAttack;
+	yourCharAttack = yourCharAttack + initialAttack;
+	$( ".clickedCharacter > footer" ).html(yourCharHealth);
+	$( ".clickedDefender > footer" ).html(enemyCharHealth);
+}
 
 

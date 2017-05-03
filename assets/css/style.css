@@ -3,14 +3,19 @@
     src: url('../fonts/SFDistantGalaxyAlternate.ttf'); /*URL to font*/
 }
 
-.box, .clickedChar, .notClicked {
+.container{
+	/*margin-left: 50px;*/
+}
+
+.characterBox, .clickedCharacter, .notClicked {
 	position: relative;
 	display: inline-block;
 	float: left;
 	border-style: solid;
 	border-width: 3px;
-	width: 250px;
-	height: 180px;
+	border-color: #9de5fd;
+	width: 200px;
+	height: 140px;
 	background-color: white;
 	color: black;
 }
@@ -21,7 +26,7 @@ body {
 	background-size: 100%;
  	/*background-repeat:no-repeat;*/
  	font-family: 'YourFontName';
- 	color: gold;
+ 	color: #9de5fd;
 }
 
 button {
@@ -57,14 +62,21 @@ footer {
 	bottom: 0;
 	position: absolute;
 	font-size: 18px;
-	margin-left: 110px;
+	margin-left: 85px;
 	/*z-index: 99;*/
-	/*text-align: center;*/	
+	/*text-align: center;	*/
 }
 
 p {
 	font-size: 18px;
 }
 
+h2 {
+	letter-spacing: 2px;
+}
 
+.row {
+	padding-left: 50px;
+	padding-right: 50px;
+}
 
