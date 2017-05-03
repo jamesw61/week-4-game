@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'YourFontName'; /*a name to be used later*/
+    font-family: 'Starwars'; /*a name to be used later*/
     src: url('../fonts/SFDistantGalaxyAlternate.ttf'); /*URL to font*/
 }
 
@@ -25,7 +25,7 @@ body {
 	background-image: url('../images/falcon.jpg'); 
 	background-size: 100%;
  	/*background-repeat:no-repeat;*/
- 	font-family: 'YourFontName';
+ 	font-family: 'Starwars';
  	color: #9de5fd;
 }
 
