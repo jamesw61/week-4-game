@@ -27,22 +27,22 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12 allChar text-center">
-				<div class="characterBox notClicked check text-center" id="obiwan">
+				<div class="characterBox notClicked text-center" id="obiwan">
 					<p>Obi-Wan Kenobi</p>
 					<img class="center" src="assets/images/obiwan.jpg" alt="obiwan" height = 75px width = 150px>
 					<footer id="obiFoot"></footer>
 				</div>
-				<div class="characterBox notClicked check text-center" id="luke">
+				<div class="characterBox notClicked text-center" id="luke">
 					<p>Luke Skywalker</p>
 					<img class="center" src="assets/images/luke.jpg" alt="luke" height = 75px width = 150px>
 					<footer id="skyFoot"></footer>
 				</div>
-				<div class="characterBox notClicked check text-center" id="vader">
+				<div class="characterBox notClicked text-center" id="vader">
 					<p>Darth Vader</p>
 					<img class="center" src="assets/images/vader.jpg" alt="darth vader" height = 75px width = 150px>
 					<footer id="vadFoot"></footer>
 				</div>
-				<div class="characterBox notClicked check text-center" id="fett">
+				<div class="characterBox notClicked text-center" id="fett">
 					<p>Boba Fett</p>
 					<img class="center" src="assets/images/fett.jpg" alt="boba fett" height = 75px width = 150px>
 					<footer id="fettFoot"></footer>
@@ -65,12 +65,16 @@
 		<div class="row">
 			<div class="col-lg-12" class="fightSection">
 				<h2>Fight Section</h2>
-				<button type="button">Attack  !</button>
+				<button id="attack" type="button">Attack  !</button>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-lg-12" id="defender">
+			<div class="col-lg-2" id="defender">
 				<h2>Defender</h2>
+			</div>
+			<div class="col-lg-10">
+				<h2 id="updateYourAttack"></h2>
+				<h2 id="updateEnemyAttack"></h2>
 			</div>
 		</div>
 

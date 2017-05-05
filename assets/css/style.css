@@ -20,6 +20,10 @@
 	color: black;
 }
 
+#updateYourAttack, #updateEnemyAttack {
+	font-family: arial;
+}
+
 body {
 	/*padding-top: 100px;*/
 	background-image: url('../images/falcon.jpg'); 
