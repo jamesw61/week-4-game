@@ -1,3 +1,10 @@
+//After a few resets of the game clicking attack will sometimes
+// run the calculations multiple times and I can't figure out why.
+// I also had a situation where, after several resets, the game would not
+// create the restart button after defeating 3 enemies - it asked me to choose another enemy.
+
+$( document ).ready(function() {
+
 var names = ["obiwan", "luke", "vader", "fett"];
 var otherNames = ["Obiwan", "Luke", "Darth Vader", "Boba Fett"]
 var healths = [100, 200, 300, 400];
@@ -12,8 +19,8 @@ var enemyCount = 3;
 var enemyName = "";
 
 
-
 function startGame(){
+	//resetCharacter resets each character to the original state - moves them to top, resets css, adds/subtracts classes
 	resetCharacter('#obiwan');
 	resetCharacter('#luke');
 	resetCharacter('#vader');
@@ -31,12 +38,14 @@ function startGame(){
 	$("#vadFoot").html(healths[2]);
 	$("#fettFoot").html(healths[3]);
 	
-
+	//The game starts here
 	$(".characterBox").click(function(){
 		$(this).detach().appendTo("#yourChar").removeClass("notClicked").addClass("clickedCharacter");
 		$(".notClicked").detach().appendTo("#enemiesAvailable").css("background-color","red").addClass("possibleEnemies");
-		getYourProperties(); 
-		makeEnemiesClickable();
+		//gets your character's health and attack properties:
+		getYourProperties();  
+		// The game calculations are nested in this function - I couldn't find a way to do them separately.		
+		makeEnemiesClickable(); 
 	});
 }
 
@@ -44,6 +53,7 @@ function makeEnemiesClickable(){
 	$(".possibleEnemies").click(function(){
      		$(this).detach().appendTo("#defender").addClass("clickedDefender").removeClass('possibleEnemies').css("background-color","black").css("color","white");
      		$(".characterBox").off("click");
+     		//gets the enemy properties:
      		getEnemyProperties();
      		$("#gameAlert").hide();	
      		$('button').click(function(){
@@ -77,31 +87,38 @@ function getEnemyProperties(){
 }
 
 function fightCalc(){
-	console.log("2" + enemyCharAttack);
+	console.log("count " + enemyCount);
+	console.log(yourCharHealth);
+	console.log(yourCharAttack);
+	console.log(enemyCharHealth);
+	console.log(enemyCharAttack);
 	enemyCharHealth = enemyCharHealth - yourCharAttack;
+	//only subtracts from your health if the enemy is still alive:
 	if(enemyCharHealth > 0){
 		yourCharHealth = yourCharHealth - enemyCharAttack;
 	}	
 	$("#updateYourAttack").show().html("You attacked " + enemyName + " for " + yourCharAttack + " damage");
 	$('#updateEnemyAttack').show().html("You were attacked by " + enemyName + " for " + enemyCharAttack  + " damage");
 	yourCharAttack = yourCharAttack + initialAttack;
-	console.log("3" + enemyCharAttack);
+	console.log("countb " + enemyCount);
+	console.log(yourCharHealth);
+	console.log(yourCharAttack);
+	console.log(enemyCharHealth);
+	console.log(enemyCharAttack);
+	
 }
 
 function fightUpdate() {
-		console.log("4" + enemyCharAttack);
 		fightCalc();
-		console.log("5" + enemyCharAttack);
 		$( ".clickedCharacter > footer" ).html(yourCharHealth);
-		
 		$( ".clickedDefender > footer" ).html(enemyCharHealth);
 		if(enemyCharHealth <= 0){
 			enemyCount--;
 			$("#gameAlert").show().html("Chose Another Enemy");
 			$('.clickedDefender').hide().removeClass('clickedDefender');
 			$('#updateEnemyAttack').hide();
-			$('#updateYourAttack').hide();
-			$('#gameTitle').html(enemyCount);
+			$('#updateYourAttack').hide();	
+			//Once the enemyCount variable reaches 0, you win:		
 			if(enemyCount === 0){
 				$("#gameAlert").show().html("You Won<br><br><br>");
 				addRestartButton();
@@ -132,4 +149,7 @@ function resetCharacter(id){
 	$(id).removeClass('clickedCharacter').removeClass('possibleEnemies').removeClass('clickedDefender');
 	$(id).css('background-color','white').css('color','black');
 }
+
 startGame();
+
+});
