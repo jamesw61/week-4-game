@@ -3,6 +3,9 @@
 // I also had a situation where, after several resets, the game would not
 // create the restart button after defeating 3 enemies - it asked me to choose another enemy.
 
+// Update 5/11 - after doing the Trivia homework, I realized that having click events inside of functions was 
+// causing problems and that was likely why the attack button wasn't working properly in this homework.
+
 $( document ).ready(function() {
 
 var names = ["obiwan", "luke", "vader", "fett"];
